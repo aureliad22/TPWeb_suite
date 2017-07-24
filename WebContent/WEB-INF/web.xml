@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>TPWEB_suite</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+<!-- Session -->
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+<!-- Pool de connexions -->
+  <resource-ref>
+    <description>Exemple de pool de connexion</description>
+    <res-ref-name>jdbc/dsTPWeb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+<!-- Servlets -->
+  <servlet>
+    <servlet-name>ListeDesFormations</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ListeDesFormations</servlet-class>
+    <init-param>
+      <param-name>dbUrlConnexion</param-name>
+      <param-value>jdbc:sqlserver://localhost:1433;database=TPJavaEE_GestionFormations</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbUser</param-name>
+      <param-value>java</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbPassword</param-name>
+      <param-value>secret$01</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListeDesFormations</servlet-name>
+    <url-pattern>/ListeDesFormations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValiderAccesAnimateur</display-name>
+    <servlet-name>ValiderAccesAnimateur</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ValiderAccesAnimateur</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValiderAccesAnimateur</servlet-name>
+    <url-pattern>/animateur/ValiderAccesAnimateur</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Deconnecter</display-name>
+    <servlet-name>Deconnecter</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.Deconnecter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnecter</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AccesAnimateurPage</display-name>
+    <servlet-name>AccesAnimateurPage</servlet-name>
+    <jsp-file>/animateur/accesAnimateur.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <display-name>AffichageMenu</display-name>
+    <servlet-name>AffichageMenu</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.AffichageMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AffichageMenu</servlet-name>
+    <url-pattern>/AffichageMenu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GererFormations</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.GererFormations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GererFormations</servlet-name>
+    <url-pattern>/animateur/gestionFormations</url-pattern>
+  </servlet-mapping>
+</web-app>

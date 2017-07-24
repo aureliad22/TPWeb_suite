@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<WatchedResource>WEB-INF/web.xml</WatchedResource>
+<Resource name="jdbc/dsTPWeb" auth="Container"
+    type="javax.sql.DataSource"
+    driverClassName= "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url= "jdbc:sqlserver://localhost:1433;databasename=TPJavaEE_GestionFormations"
+    username="sa" password="Pa$$w0rd"
+    maxActive="20" maxIdle="10"/>
+</Context>
