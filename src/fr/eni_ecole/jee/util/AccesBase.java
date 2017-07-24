@@ -38,22 +38,22 @@ public class AccesBase {
 	  * @return Connection
 	  * @throws SQLException Exception de type SQL.
 	  */
-	public static Connection getConnection() throws SQLException {
+	public static Connection getConnection() throws Exception {
 		InitialContext jndi = null;
 		DataSource ds = null;
-		// ----> Obtenir une référence sur le contexte initial JNDI
+		Connection cnx = null;
 		try {
+			// ----> Obtenir une référence sur le contexte initial JNDI
 			jndi = new InitialContext();
+			// ----> Rechercher la source de données
+			ds = (DataSource) jndi.lookup("java:comp/env/jdbc/dsTPWeb");
+			// ----> Obtenir une connexion
+			cnx = ds.getConnection();
 		} catch (NamingException e) {
 			e.printStackTrace();
+			throw new Exception("L'accès à la base est impossible pour le moment");
 		}
-		// ----> recherche de la source de données
-		try {
-			ds = (DataSource) jndi.lookup("java:comp/env/jdbc/datasource");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-		// ----> obtenir une connexion
-		return ds.getConnection();
+
+		return cnx;
 	}
 }

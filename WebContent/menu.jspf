@@ -1,6 +1,6 @@
 	<div id="menu">
 		<a href="<%=request.getContextPath()%>/">Accueil</a><br />
-		<a href="<%=request.getContextPath()%>/ListeDesFormations">Liste des formations</a><br />
+		<a href="<%=request.getContextPath()%>/ListerFormations">Liste des formations</a><br />
 		<a href="<%=request.getContextPath()%>/animateur/ValiderAccesAnimateur">Accès animateur</a><br />
 		<a href="<%=request.getContextPath()%>/stagiaire/accesStagiaire.html">Accès stagiaire</a><br />
 		<br />

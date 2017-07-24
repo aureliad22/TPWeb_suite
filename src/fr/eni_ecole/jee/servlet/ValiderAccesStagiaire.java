@@ -1,7 +1,6 @@
 package fr.eni_ecole.jee.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,44 +9,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni_ecole.jee.bean.Animateur;
+import fr.eni_ecole.jee.bean.Stagiaire;
 import fr.eni_ecole.jee.dal.AnimateurDAO;
+import fr.eni_ecole.jee.dal.StagiaireDAO;
 
 /**
- * Servlet pour valider l'accès des animateurs.
- * @author Administrateur
- * @date 15 janv. 2015
- * @version J4_TPWEB v1.0
+ * Servlet implementation class ValiderAccesStagiaire
  */
-public class ValiderAccesAnimateur extends HttpServlet {
+public class ValiderAccesStagiaire extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ValiderAccesAnimateur() {
+    public ValiderAccesStagiaire() {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		valider(request, response);
-	}
-	
-   /**
-    * {@inheritDoc}
-    */
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		valider(request, response);
 	}
 
 	/**
-	 * Méthode qui permet de valider si l'animateur est déjà connecté et de rediriger vers le bon menu.
-	 * Ou de valider si l'animateur est présent en BD et que les informations du formulaires sont les bons.
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		valider(request, response);
+	}
+
+	/**
+	 * Méthode qui permet de valider si le stagiaire est déjà connecté et de le rediriger vers le bon menu.
+	 * Ou de valider si le stagiaire est présent en BD et que les informations du formulaires sont les bons.
 	 * Si l'utilisateur est connecté le mettre en session et rediriger vers la bonne page.
 	 * @param request requete
 	 * @param response réponse
@@ -57,12 +52,12 @@ public class ValiderAccesAnimateur extends HttpServlet {
 	protected void valider(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher;
-		Animateur animateurConnecte = null;
+		Stagiaire stagiaireConnecte = null;
 
 		// Si l'animateur est déjà connecté, on redirige vers le menu animateur
-		animateurConnecte = (Animateur)request.getSession().getAttribute("animateurConnecte");
-		if (animateurConnecte!=null) {
-			redirectionMenuAnimateur(request, response);
+		stagiaireConnecte = (Stagiaire)request.getSession().getAttribute("stagiaireConnecte");
+		if (stagiaireConnecte!=null) {
+			redirectionMenuStagiaire(request, response);
 			return;
 		}		
 		
@@ -77,7 +72,7 @@ public class ValiderAccesAnimateur extends HttpServlet {
 			
 			String message = "Les champs Identifiant et Mot de passe sont obligatoires";
 			request.setAttribute("messageErreur", message);
-			dispatcher = getServletContext().getNamedDispatcher("AccesAnimateurPage");
+			dispatcher = getServletContext().getNamedDispatcher("AccesStagiairePage");
 			dispatcher.forward(request, response);
 			return;
 		}
@@ -85,7 +80,7 @@ public class ValiderAccesAnimateur extends HttpServlet {
 
 		try {
 			// Valider l'identification par rapport aux informations de la base
-			animateurConnecte = AnimateurDAO.rechercher(new Animateur(0, null, null, motdepasse, mail));
+			stagiaireConnecte = StagiaireDAO.rechercher(new Stagiaire(null, null, motdepasse, mail));
 		} catch (Exception e) {
 			// Placer l'objet représentant l'exception dans le contexte de requete
 			request.setAttribute("erreur", e);
@@ -96,11 +91,11 @@ public class ValiderAccesAnimateur extends HttpServlet {
 		}		
 			
 		// Si l'authentification est réussie...
-		if (animateurConnecte != null) {
+		if (stagiaireConnecte != null) {
 			// Placer le bean dans le contexte de session
-			request.getSession().setAttribute("animateurConnecte", animateurConnecte);
+			request.getSession().setAttribute("stagiaireConnecte", stagiaireConnecte);
 			// Présenter la réponse
-			redirectionMenuAnimateur(request, response);
+			redirectionMenuStagiaire(request, response);
 			return;
 		}
 		// ...sinon
@@ -108,19 +103,19 @@ public class ValiderAccesAnimateur extends HttpServlet {
 			// Retourner à l'écran d'identification avec un message d'erreur fonctionnel			
 			String message = "Identifiant ou mot de passe incorrect";
 			request.setAttribute("messageErreur", message);
-			dispatcher = getServletContext().getNamedDispatcher("AccesAnimateurPage");
+			dispatcher = getServletContext().getNamedDispatcher("AccesStagiairePage");
 			dispatcher.forward(request, response);
 			}
 	}
 	
-	protected void redirectionMenuAnimateur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void redirectionMenuStagiaire(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// En fonction de la méthode de redirection utilisée (forward ou sendRedirect()),
 		// l'utilisateur pourra voir ou non l'URL de la ressource : 
 		
 		// L'utilisation d'un forward masque la nouvelle ressource demandée (car tout 
 		// se passe au sein du serveur d'application) 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/animateur/menu.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/stagiaire/menu.jsp");
 		dispatcher.forward(request, response);
 		
 		// L'utilisation d'un sendRedirect expose le nom de la page à l'utilisateur (car

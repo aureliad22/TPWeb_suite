@@ -17,9 +17,9 @@ public class FormationDAO {
 	/**
 	 * Méthode qui permet d'ajouter une formation dans la BD.
 	 * @param formation Bean formation à ajouter.
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static void ajouter(Formation formation) throws SQLException{
+	public static void ajouter(Formation formation) throws Exception{
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 
@@ -40,9 +40,9 @@ public class FormationDAO {
 	/**
 	 * Méthode qui permet de supprimer une formation dans la BD.
 	 * @param formation Bean formation à supprimer.
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static void supprimer(Formation formation) throws SQLException{
+	public static void supprimer(Formation formation) throws Exception{
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 		try{
@@ -59,9 +59,9 @@ public class FormationDAO {
 	/**
 	 * Méthode qui permet de modifier une formation dans la BD.
 	 * @param formation Bean formation à modifer.
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static void modifier(Formation formation) throws SQLException{
+	public static void modifier(Formation formation) throws Exception{
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 		try{
@@ -82,9 +82,9 @@ public class FormationDAO {
 	/**
 	 * Méthode qui permet de rechercher une formation dans la BD.
 	 * @param formation Bean formation à rechercher.
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static Formation rechercher(Formation formation) throws SQLException{
+	public static Formation rechercher(Formation formation) throws Exception{
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 		ResultSet rs=null;
@@ -111,9 +111,9 @@ public class FormationDAO {
 	/**
 	 * Retourne la liste des formations présente dans la BD.
 	 * @return La liste peut être vide mais jamais <code>null</code>
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static ArrayList<Formation> lister() throws SQLException{
+	public static ArrayList<Formation> lister() throws Exception{
 		Connection cnx=null;
 		Statement rqt=null;
 		ResultSet rs=null;

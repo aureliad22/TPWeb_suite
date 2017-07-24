@@ -20,9 +20,9 @@ public class AnimateurDAO {
 	 * Méthode qui permet de rechercher un animateur depuis la BD.
 	 * @param animateur animateur recherché
 	 * @return retourne l'animateur.
-	 * @throws SQLException Exception de type SQL.
+	 * @throws Exception Exception de type SQL.
 	 */
-	public static Animateur rechercher(Animateur animateur) throws SQLException{
+	public static Animateur rechercher(Animateur animateur) throws Exception{
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		ResultSet rs = null;

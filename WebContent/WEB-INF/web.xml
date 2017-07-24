@@ -9,11 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-<!-- Session -->
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
-<!-- Pool de connexions -->
   <resource-ref>
     <description>Exemple de pool de connexion</description>
     <res-ref-name>jdbc/dsTPWeb</res-ref-name>
@@ -21,7 +19,6 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
-<!-- Servlets -->
   <servlet>
     <servlet-name>ListeDesFormations</servlet-name>
     <servlet-class>fr.eni_ecole.jee.servlet.ListeDesFormations</servlet-class>
@@ -83,5 +80,25 @@
   <servlet-mapping>
     <servlet-name>GererFormations</servlet-name>
     <url-pattern>/animateur/gestionFormations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Servlet listant l'ensemble des formations</description>
+    <display-name>ListerFormations</display-name>
+    <servlet-name>ListerFormations</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ListerFormations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListerFormations</servlet-name>
+    <url-pattern>/ListerFormations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValiderAccesStagiaire</display-name>
+    <servlet-name>ValiderAccesStagiaire</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ValiderAccesStagiaire</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValiderAccesStagiaire</servlet-name>
+    <url-pattern>/ValiderAccesStagiaire</url-pattern>
   </servlet-mapping>
 </web-app>
