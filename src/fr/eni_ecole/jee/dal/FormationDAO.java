@@ -68,6 +68,7 @@ public class FormationDAO {
 			cnx=AccesBase.getConnection();
 			rqt=cnx.prepareStatement("update formations set libelle = ?, debut = ?, fin = ?, description = ? where id = ?");
 			rqt.setString(1, formation.getLibelle());
+			System.out.println(formation.getLibelle());
 			rqt.setDate(2, new java.sql.Date(formation.getDateDebut().getTime()));
 			rqt.setDate(3, new java.sql.Date(formation.getDateFin().getTime()));
 			rqt.setString(4,formation.getDescription());

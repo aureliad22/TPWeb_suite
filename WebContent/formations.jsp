@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page
 	import="java.util.List, fr.eni_ecole.jee.bean.Formation, fr.eni_ecole.tools.ManipDate"%>
 

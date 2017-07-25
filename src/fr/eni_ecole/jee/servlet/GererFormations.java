@@ -61,7 +61,7 @@ public class GererFormations extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher;
-
+		response.setCharacterEncoding("UTF-8");
 		String ajouterParam = request.getParameter("bAjouter"); // Ajout d'une
 																// nouvelle
 																// formation

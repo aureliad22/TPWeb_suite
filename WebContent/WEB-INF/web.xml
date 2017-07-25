@@ -4,11 +4,9 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
-  
   <resource-ref>
     <description>Exemple de pool de connexion</description>
     <res-ref-name>jdbc/dsTPWeb</res-ref-name>
@@ -16,28 +14,6 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
-  
-  <!-- <servlet>
-    <servlet-name>ListeDesFormations</servlet-name>
-    <servlet-class>fr.eni_ecole.jee.servlet.ListeDesFormations</servlet-class>
-    <init-param>
-      <param-name>dbUrlConnexion</param-name>
-      <param-value>jdbc:sqlserver://localhost:1433;database=TPJavaEE_GestionFormations</param-value>
-    </init-param>
-    <init-param>
-      <param-name>dbUser</param-name>
-      <param-value>java</param-value>
-    </init-param>
-    <init-param>
-      <param-name>dbPassword</param-name>
-      <param-value>secret$01</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ListeDesFormations</servlet-name>
-    <url-pattern>/ListeDesFormations</url-pattern>
-  </servlet-mapping> -->
-  
   <servlet>
     <description></description>
     <display-name>ValiderAccesAnimateur</display-name>
@@ -48,7 +24,6 @@
     <servlet-name>ValiderAccesAnimateur</servlet-name>
     <url-pattern>/animateur/ValiderAccesAnimateur</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ValiderAccesStagiaire</display-name>
@@ -59,7 +34,6 @@
     <servlet-name>ValiderAccesStagiaire</servlet-name>
     <url-pattern>/stagiaire/ValiderAccesStagiaire</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>Deconnecter</display-name>
@@ -70,19 +44,16 @@
     <servlet-name>Deconnecter</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>AccesAnimateurPage</display-name>
     <servlet-name>AccesAnimateurPage</servlet-name>
     <jsp-file>/animateur/accesAnimateur.jsp</jsp-file>
   </servlet>
-  
   <servlet>
     <display-name>AccesStagiairePage</display-name>
     <servlet-name>AccesStagiairePage</servlet-name>
     <jsp-file>/stagiaire/accesStagiaire.jsp</jsp-file>
   </servlet>
-  
   <servlet>
     <display-name>AffichageMenu</display-name>
     <servlet-name>AffichageMenu</servlet-name>
@@ -92,7 +63,6 @@
     <servlet-name>AffichageMenu</servlet-name>
     <url-pattern>/AffichageMenu</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>GererFormations</servlet-name>
     <servlet-class>fr.eni_ecole.jee.servlet.GererFormations</servlet-class>
@@ -101,7 +71,6 @@
     <servlet-name>GererFormations</servlet-name>
     <url-pattern>/animateur/gestionFormations</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>Servlet listant l'ensemble des formations</description>
     <display-name>ListerFormations</display-name>
@@ -112,5 +81,14 @@
     <servlet-name>ListerFormations</servlet-name>
     <url-pattern>/ListerFormations</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <description>Servlet de gestion d'un stagiaire</description>
+    <display-name>GererStagiaire</display-name>
+    <servlet-name>GererStagiaire</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.GererStagiaire</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GererStagiaire</servlet-name>
+    <url-pattern>/GererStagiaire</url-pattern>
+  </servlet-mapping>
 </web-app>

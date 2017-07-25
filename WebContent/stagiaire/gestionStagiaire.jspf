@@ -1,0 +1,12 @@
+<%@ page  import ="fr.eni_ecole.jee.bean.*, java.util.*, java.text.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <div id="profilStagiaire">
+    <form id="gestionStagiaire" action="<%=request.getContextPath()%>/stagiaire/gestionStagiaire" method="post">
+    
+                <label class="stagiaireNom">${stagiaireConnecte.nom }</label>
+                <label class="stagiairePrenom">prenom</label>
+                <label class="stagiaireEmail">email</label>
+                <label class="stagiaireMdP">mdp</label>
+                <input type="submit" name="bAjouter" value="Ajouter"/>
+    </form>
+    </div>

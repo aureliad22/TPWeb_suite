@@ -13,17 +13,12 @@
 		<h1>TP Web - Menu Stagiaire</h1>
 	</div>
 
-	<%@ include file="../menu.jspf" %>
+	<%@ include file="/stagiaire/navigation.jspf" %>
 
 	<div id="contenu">
-	   <jsp:useBean id="stagiaireConnecte" class="fr.eni_ecole.jee.bean.Stagiaire" scope="session" />
-    <p>
-    Bonjour
-    <jsp:getProperty property="prenom" name="stagiaireConnecte"/>
-    <jsp:getProperty property="nom" name="stagiaireConnecte"/>  
-    </p>
+
 		<p>
-			Bonjour ${request.scope.stagiaireConnecte.prenom}
+			Bonjour ${stagiaireConnecte.prenom} ${stagiaireConnecte.nom}
 		</p>
 	</div>
 	
