@@ -1,7 +1,6 @@
 package fr.eni_ecole.jee.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,9 +39,9 @@ public class ValiderAccesAnimateur extends HttpServlet {
     * {@inheritDoc}
     */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		valider(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = getServletContext().getNamedDispatcher("AccesAnimateurPage");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -64,7 +63,7 @@ public class ValiderAccesAnimateur extends HttpServlet {
 		if (animateurConnecte!=null) {
 			redirectionMenuAnimateur(request, response);
 			return;
-		}		
+		}else{	
 		
 		// Récupération des informations saisies dans le formulaire
 		String mail = request.getParameter("identifiant");
@@ -111,6 +110,7 @@ public class ValiderAccesAnimateur extends HttpServlet {
 			dispatcher = getServletContext().getNamedDispatcher("AccesAnimateurPage");
 			dispatcher.forward(request, response);
 			}
+		}
 	}
 	
 	protected void redirectionMenuAnimateur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

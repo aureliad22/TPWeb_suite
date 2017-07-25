@@ -2,16 +2,13 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>TPWEB_suite</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
+  
   <resource-ref>
     <description>Exemple de pool de connexion</description>
     <res-ref-name>jdbc/dsTPWeb</res-ref-name>
@@ -19,7 +16,8 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
-  <servlet>
+  
+  <!-- <servlet>
     <servlet-name>ListeDesFormations</servlet-name>
     <servlet-class>fr.eni_ecole.jee.servlet.ListeDesFormations</servlet-class>
     <init-param>
@@ -38,7 +36,8 @@
   <servlet-mapping>
     <servlet-name>ListeDesFormations</servlet-name>
     <url-pattern>/ListeDesFormations</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
+  
   <servlet>
     <description></description>
     <display-name>ValiderAccesAnimateur</display-name>
@@ -49,6 +48,18 @@
     <servlet-name>ValiderAccesAnimateur</servlet-name>
     <url-pattern>/animateur/ValiderAccesAnimateur</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ValiderAccesStagiaire</display-name>
+    <servlet-name>ValiderAccesStagiaire</servlet-name>
+    <servlet-class>fr.eni_ecole.jee.servlet.ValiderAccesStagiaire</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValiderAccesStagiaire</servlet-name>
+    <url-pattern>/stagiaire/ValiderAccesStagiaire</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>Deconnecter</display-name>
@@ -59,11 +70,19 @@
     <servlet-name>Deconnecter</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <display-name>AccesAnimateurPage</display-name>
     <servlet-name>AccesAnimateurPage</servlet-name>
     <jsp-file>/animateur/accesAnimateur.jsp</jsp-file>
   </servlet>
+  
+  <servlet>
+    <display-name>AccesStagiairePage</display-name>
+    <servlet-name>AccesStagiairePage</servlet-name>
+    <jsp-file>/stagiaire/accesStagiaire.jsp</jsp-file>
+  </servlet>
+  
   <servlet>
     <display-name>AffichageMenu</display-name>
     <servlet-name>AffichageMenu</servlet-name>
@@ -73,6 +92,7 @@
     <servlet-name>AffichageMenu</servlet-name>
     <url-pattern>/AffichageMenu</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>GererFormations</servlet-name>
     <servlet-class>fr.eni_ecole.jee.servlet.GererFormations</servlet-class>
@@ -81,6 +101,7 @@
     <servlet-name>GererFormations</servlet-name>
     <url-pattern>/animateur/gestionFormations</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description>Servlet listant l'ensemble des formations</description>
     <display-name>ListerFormations</display-name>
@@ -91,14 +112,5 @@
     <servlet-name>ListerFormations</servlet-name>
     <url-pattern>/ListerFormations</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ValiderAccesStagiaire</display-name>
-    <servlet-name>ValiderAccesStagiaire</servlet-name>
-    <servlet-class>fr.eni_ecole.jee.servlet.ValiderAccesStagiaire</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ValiderAccesStagiaire</servlet-name>
-    <url-pattern>/ValiderAccesStagiaire</url-pattern>
-  </servlet-mapping>
+
 </web-app>

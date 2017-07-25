@@ -2,7 +2,7 @@
 		<a href="<%=request.getContextPath()%>/">Accueil</a><br />
 		<a href="<%=request.getContextPath()%>/ListerFormations">Liste des formations</a><br />
 		<a href="<%=request.getContextPath()%>/animateur/ValiderAccesAnimateur">Accès animateur</a><br />
-		<a href="<%=request.getContextPath()%>/stagiaire/accesStagiaire.html">Accès stagiaire</a><br />
+		<a href="<%=request.getContextPath()%>/stagiaire/ValiderAccesStagiaire">Accès stagiaire</a><br />
 		<br />
 		<form method="get" action="http://www.google.fr/search">
 			<input type="hidden" name="hl" value="fr" />
