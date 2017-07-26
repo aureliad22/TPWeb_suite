@@ -15,6 +15,27 @@ import java.io.Serializable;
 public class Stagiaire implements Serializable{
 
 	/**
+	 * {@inheritDoc}
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Stagiaire [id=");
+		builder.append(id);
+		builder.append(", nom=");
+		builder.append(nom);
+		builder.append(", prenom=");
+		builder.append(prenom);
+		builder.append(", motDePasse=");
+		builder.append(motDePasse);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

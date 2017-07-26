@@ -18,7 +18,7 @@
 <%@ include file="/stagiaire/navigation.jspf" %>
 
     <div id="contenu">
-    
+
     <%@ include file="/stagiaire/gestionStagiaire.jspf" %>
     
     </div>

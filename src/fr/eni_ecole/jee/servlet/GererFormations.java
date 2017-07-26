@@ -62,21 +62,14 @@ public class GererFormations extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher;
 		response.setCharacterEncoding("UTF-8");
-		String ajouterParam = request.getParameter("bAjouter"); // Ajout d'une
-																// nouvelle
-																// formation
-		String enregistrerParam = request.getParameter("bEnregistrer"); // Enregistrement
-																		// de la
-																		// formation
-																		// courante
+		String ajouterParam = request.getParameter("bAjouter"); // Ajout d'une nouvelle formation
+		String enregistrerParam = request.getParameter("bEnregistrer"); // Enregistrement de la formation courante
 
 		// Récupérer la liste des formations en session.
 		@SuppressWarnings("unchecked")
-		ArrayList<Formation> listeFormations = (ArrayList<Formation>) request
-				.getSession().getAttribute("listeFormations");
+		ArrayList<Formation> listeFormations = (ArrayList<Formation>) request.getSession().getAttribute("listeFormations");
 		if (listeFormations == null)
-			listeFormations = new ArrayList<Formation>();// Pour le 1er passage
-															// dans la servlet
+			listeFormations = new ArrayList<Formation>();// Pour le 1er passage dans la servlet
 
 		// Identification de l'action Modifier (et de la formation à modifier)
 		String actionModifier = null;
@@ -89,13 +82,10 @@ public class GererFormations extends HttpServlet {
 			}
 		}
 
-		// L'action est "Modifier" : on positione la formation à modifier comme
-		// formationCourante
+		// L'action est "Modifier" : on positione la formation à modifier comme formationCourante
 		if (formationAModifer != null) {
-			request.getSession().setAttribute("formationCourante",
-					formationAModifer);
-			dispatcher = request
-					.getRequestDispatcher("/animateur/modifierFormation.jsp");
+			request.getSession().setAttribute("formationCourante",formationAModifer);
+			dispatcher = request.getRequestDispatcher("/animateur/modifierFormation.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

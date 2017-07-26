@@ -69,7 +69,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GererFormations</servlet-name>
-    <url-pattern>/animateur/gestionFormations</url-pattern>
+    <url-pattern>/animateur/GestionFormations</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Servlet listant l'ensemble des formations</description>
@@ -89,6 +89,19 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GererStagiaire</servlet-name>
-    <url-pattern>/GererStagiaire</url-pattern>
+    <url-pattern>/stagiaire/GestionProfil</url-pattern>
   </servlet-mapping>
+ <!--  <filter>
+    <display-name>FiltreAnimateur</display-name>
+    <filter-name>FiltreAnimateur</filter-name>
+    <filter-class>fr.eni_ecole.jee.filter.FiltreAnimateur</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltreAnimateur</filter-name>
+    <url-pattern>/animateur/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping> -->
 </web-app>

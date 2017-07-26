@@ -35,10 +35,8 @@ public class ValiderAccesStagiaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = getServletContext().getNamedDispatcher(
-				"AccesStagiairePage");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = getServletContext().getNamedDispatcher("AccesStagiairePage");
 		rd.forward(request, response);
 	}
 
@@ -72,8 +70,7 @@ public class ValiderAccesStagiaire extends HttpServlet {
 			}
 
 			try {
-				// Valider l'identification par rapport aux informations de la
-				// base
+				// Valider l'identification par rapport aux informations de la base
 				stagiaireConnecte = StagiaireDAO.rechercher(new Stagiaire(null,	null, motdepasse, mail));
 			} catch (Exception e) {
 				// Placer l'objet représentant l'exception dans le contexte de

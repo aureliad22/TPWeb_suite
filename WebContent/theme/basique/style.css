@@ -97,3 +97,10 @@ form.connexion > .bloc_identifiant, form.connexion > .bloc_motdepasse {
 #pieddepage a:hover {
 	text-decoration: underline;
 }
+
+#gestionStagiaire{
+	float: left;
+    min-width: 130px;
+    text-align: left;
+    font-weight: bold;
+}

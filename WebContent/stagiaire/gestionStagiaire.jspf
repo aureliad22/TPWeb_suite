@@ -1,12 +1,35 @@
-<%@ page  import ="fr.eni_ecole.jee.bean.*, java.util.*, java.text.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <div id="profilStagiaire">
-    <form id="gestionStagiaire" action="<%=request.getContextPath()%>/stagiaire/gestionStagiaire" method="post">
-    
-                <label class="stagiaireNom">${stagiaireConnecte.nom }</label>
-                <label class="stagiairePrenom">prenom</label>
-                <label class="stagiaireEmail">email</label>
-                <label class="stagiaireMdP">mdp</label>
-                <input type="submit" name="bAjouter" value="Ajouter"/>
-    </form>
-    </div>
+<p class="message">${message}</p>
+
+<c:if test="${!empty message}">
+    <script lang="javascript">
+        alert("${message}");            
+    </script>
+</c:if>
+        
+<div id="profilStagiaire">
+	<form id="gestionStagiaire" action="<%=request.getContextPath()%>/stagiaire/GestionProfil" method="post">
+		<div class="bloc_identifiant">
+			<input type="hidden" id="identifiant" name="identifiant" />
+		</div>
+		<div class="bloc_nom">
+			<label for="nomStagiaire">Nom : </label> 
+			<input class="champtexte" type="text" name="nomStagiaire" id="nomStagiaire"	value="${stagiaireConnecte.nom}" />
+		</div>
+		<div class="bloc_prenom">
+			<label for="prenomStagiaire">Prénom :</label> 
+			<input class="champtexte" type="text" name="prenomStagiaire" id="prenomStagiaire" value="${stagiaireConnecte.prenom}" />
+		</div>
+		<div class="bloc_email">
+			<label for="emailStagiaire">Email :</label> 
+			<input class="champtexte" type="text" name="emailStagiaire" id="emailStagiaire"	value="${stagiaireConnecte.email}" />
+		</div>
+		<div class="bloc_motdepasse">
+			<label for="mdpStagiaire">Mot de passe</label> 
+			<input class="champtexte" type="text" name="mdpStagiaire" id="mdpStagiaire"	value="${stagiaireConnecte.motDePasse}" />
+		</div>
+		<div class="bloc_enregistrer">
+			<input type="submit" name="bModifier" value="Modifier" />
+		</div>
+	</form>
+</div>
