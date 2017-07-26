@@ -24,10 +24,18 @@
 			<label for="emailStagiaire">Email :</label> 
 			<input class="champtexte" type="text" name="emailStagiaire" id="emailStagiaire"	value="${stagiaireConnecte.email}" />
 		</div>
+        <div class="bloc_motdepasse">
+            <label for="ancienMdpStagiaire">Ancien mot de passe</label> 
+            <input class="champtexte" type="password" name="ancienMdpStagiaire" id="ancienMdpStagiaire"/>
+        </div>		
 		<div class="bloc_motdepasse">
-			<label for="mdpStagiaire">Mot de passe</label> 
-			<input class="champtexte" type="text" name="mdpStagiaire" id="mdpStagiaire"	value="${stagiaireConnecte.motDePasse}" />
+			<label for="nouveauMdpStagiaire">Nouveau mot de passe</label> 
+			<input class="champtexte" type="password" name="nouveauMdpStagiaire" id="nouveauMdpStagiaire" />
 		</div>
+		<div class="bloc_motdepasse">
+            <label for="confirmMdpStagiaire">Confirmation mot de passe</label> 
+            <input class="champtexte" type="password" name="confirmMdpStagiaire" id="confirmMdpStagiaire"" />
+        </div>
 		<div class="bloc_enregistrer">
 			<input type="submit" name="bModifier" value="Modifier" />
 		</div>

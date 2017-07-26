@@ -49,18 +49,30 @@ public class GererStagiaire extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Stagiaire stagiaireConnecte = (Stagiaire) request.getSession().getAttribute("stagiaireConnecte");
-		System.out.println(stagiaireConnecte);
 
 		try {
 			stagiaireConnecte.setNom(request.getParameter("nomStagiaire"));
 			stagiaireConnecte.setPrenom(request.getParameter("prenomStagiaire"));
 			stagiaireConnecte.setEmail(request.getParameter("emailStagiaire"));
-			stagiaireConnecte.setMotDePasse(request.getParameter("mdpStagiaire"));			
-			System.out.println("############################");
-			System.out.println(stagiaireConnecte);
+			
+			if(!(stagiaireConnecte.getMotDePasse()).equals(request.getParameter("ancienMdpStagiaire")))
+			{
+				request.setAttribute("Erreur", "Le mot de passe est erroné.");
+			}
+			else
+			{
+				String nouveauMdp = request.getParameter("nouveauMdpStagiaire");
+				if(nouveauMdp.equals(request.getParameter("confirmMdpStagiaire"))){
+					stagiaireConnecte.setMotDePasse(request.getParameter("nouveauMdpStagiaire"));	
+				}
+				else
+				{
+					request.setAttribute("Erreur", "Le mot de passe ne correspond pas.");
+				}
+			}
 			StagiaireDAO.modifierProfil(stagiaireConnecte);
-			request.setAttribute("message", "La modification s'est déroulée avec succès.");
-			RequestDispatcher rd = request.getRequestDispatcher("/stagiaire/gererStagiaire.jsp");
+			request.setAttribute("Message", "La modification s'est déroulée avec succès.");
+			RequestDispatcher rd = request.getRequestDispatcher("/stagiaire/menu.jsp");
 			rd.forward(request, response);
 		} 
 		catch (ParseException e1) {
